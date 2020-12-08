@@ -1,0 +1,10 @@
+C:\Users\Kristers\source\repos\_Labd2\Kristers_Dugels_181RDB024\bin\Debug\Kristers_Dugels_181RDB024.exe.config
+C:\Users\Kristers\source\repos\_Labd2\Kristers_Dugels_181RDB024\bin\Debug\Kristers_Dugels_181RDB024.exe
+C:\Users\Kristers\source\repos\_Labd2\Kristers_Dugels_181RDB024\bin\Debug\Kristers_Dugels_181RDB024.pdb
+C:\Users\Kristers\source\repos\_Labd2\Kristers_Dugels_181RDB024\obj\Debug\Kristers_Dugels_181RDB024.csprojAssemblyReference.cache
+C:\Users\Kristers\source\repos\_Labd2\Kristers_Dugels_181RDB024\obj\Debug\Kristers_Dugels_181RDB024.Form1.resources
+C:\Users\Kristers\source\repos\_Labd2\Kristers_Dugels_181RDB024\obj\Debug\Kristers_Dugels_181RDB024.Properties.Resources.resources
+C:\Users\Kristers\source\repos\_Labd2\Kristers_Dugels_181RDB024\obj\Debug\Kristers_Dugels_181RDB024.csproj.GenerateResource.cache
+C:\Users\Kristers\source\repos\_Labd2\Kristers_Dugels_181RDB024\obj\Debug\Kristers_Dugels_181RDB024.csproj.CoreCompileInputs.cache
+C:\Users\Kristers\source\repos\_Labd2\Kristers_Dugels_181RDB024\obj\Debug\Kristers_Dugels_181RDB024.exe
+C:\Users\Kristers\source\repos\_Labd2\Kristers_Dugels_181RDB024\obj\Debug\Kristers_Dugels_181RDB024.pdb
