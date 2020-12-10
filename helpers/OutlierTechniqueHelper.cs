@@ -25,6 +25,9 @@ namespace Kristers_Dugels_181RDB024.helpers {
                         }
                     }
 
+                    Func<byte, int, int, byte> PixelValue = (byte pixel, int sum, int T) => 
+                        (pixel - sum / 8) > t ? (byte)Math.Max(0, Math.Min(255, sum /= 8)) : pixel;
+
                     dest[x, y].R = PixelValue(src[x, y].R, r, t);
                     dest[x, y].G = PixelValue(src[x, y].G, g, t);
                     dest[x, y].B = PixelValue(src[x, y].B, b, t);
@@ -33,12 +36,6 @@ namespace Kristers_Dugels_181RDB024.helpers {
             }
 
             return dest;
-        }
-        static byte PixelValue(byte pixel, int sum, int t) {
-            if ((pixel - sum / 8) > t) {
-                return (byte)Math.Max(0, Math.Min(255, sum /= 8));
-            }
-            return pixel;
         }
 
         public static PixelRGB[,] OutlierTechnique(PixelRGB[,] src, PixelRGB[,] dest) {
