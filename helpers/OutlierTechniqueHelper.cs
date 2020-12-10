@@ -25,13 +25,13 @@ namespace Kristers_Dugels_181RDB024.helpers {
                         }
                     }
 
-                    Func<byte, int, int, byte> PixelValue = (byte pixel, int sum, int T) => 
+                    Func<byte, int, byte> PixelValue = (byte pixel, int sum) => 
                         (pixel - sum / 8) > t ? (byte)Math.Max(0, Math.Min(255, sum /= 8)) : pixel;
 
-                    dest[x, y].R = PixelValue(src[x, y].R, r, t);
-                    dest[x, y].G = PixelValue(src[x, y].G, g, t);
-                    dest[x, y].B = PixelValue(src[x, y].B, b, t);
-                    dest[x, y].I = PixelValue(src[x, y].I, i, t);
+                    dest[x, y].R = PixelValue(src[x, y].R, r);
+                    dest[x, y].G = PixelValue(src[x, y].G, g);
+                    dest[x, y].B = PixelValue(src[x, y].B, b);
+                    dest[x, y].I = PixelValue(src[x, y].I, i);
                 }
             }
 
