@@ -23,7 +23,7 @@ namespace Kristers_Dugels_181RDB024
 
         private void InvertToolStripMenuItem_Click(object sender, EventArgs e){
             if (pictureBox1.Image != null) {
-                imageClass.img2 = BoxFilterHelper.BoxFilter(imageClass.img1, imageClass.img2);
+                imageClass.img2 = OutlierTechniqueHelper.OutlierTechnique(imageClass.img1, imageClass.img2);
                 pictureBox2.Image = imageClass.DrawImage(imageClass.img2);
             }
         }

@@ -29,11 +29,15 @@ namespace Kristers_Dugels_181RDB024.helpers
                             i += src[x + fi - 1, y + fj - 1].I;
                         }
                     }
+                    r = Math.Max(0, Math.Min(255, r /= 9));
+                    g = Math.Max(0, Math.Min(255, g /= 9));
+                    b = Math.Max(0, Math.Min(255, b /= 9));
+                    i = Math.Max(0, Math.Min(255, i /= 9));
 
-                    dest[x, y].R = (byte)(r / 9);
-                    dest[x, y].G = (byte)(g / 9);
-                    dest[x, y].B = (byte)(b / 9);
-                    dest[x, y].I = (byte)(i / 9);
+                    dest[x, y].R = (byte)(r);
+                    dest[x, y].G = (byte)(g);
+                    dest[x, y].B = (byte)(b);
+                    dest[x, y].I = (byte)(i);
                 }
             }
 

@@ -29,12 +29,5 @@ namespace Kristers_Dugels_181RDB024
             B = b;
             I = (byte)Math.Round(0.0722f * b + 0.715f * g + 0.212f * r);
         }
-        /*
-         *  Getter to get Pixel Color, returns tuple.
-         */
-        public Tuple<byte, byte, byte> GetPixelColor()
-        {
-            return Tuple.Create(R, G, B);
-        }
     }
 }
