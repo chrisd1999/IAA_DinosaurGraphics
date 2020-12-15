@@ -68,7 +68,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="helpers\GuassianBlur.cs" />
+    <Compile Include="helpers\GuassianBlurHelper.cs" />
     <Compile Include="helpers\OutlierTechniqueHelper.cs" />
     <Compile Include="ImageClass.cs" />
     <Compile Include="PixelRGB.cs" />
