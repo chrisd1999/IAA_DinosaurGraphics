@@ -1,5 +1,5 @@
 ﻿
-namespace Kristers_Dugels_181RDB024.filters {
+namespace DinosaurGraphics.filters {
     public static class NonLocalMeansFilter {
 
         static PixelRGB[,] NonLocalMeansImpl(PixelRGB[,] src, PixelRGB[,] dest) {

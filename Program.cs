@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace Kristers_Dugels_181RDB024
+namespace DinosaurGraphics
 {
     static class Program
     {

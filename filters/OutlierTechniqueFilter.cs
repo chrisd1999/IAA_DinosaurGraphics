@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Kristers_Dugels_181RDB024.filters {
+namespace DinosaurGraphics.filters {
     public static class OutlierTechniqueFilter {
 
         public static PixelRGB[,] OutlierTechniqueImpl(PixelRGB[,] src, PixelRGB[,] dest, int t) {

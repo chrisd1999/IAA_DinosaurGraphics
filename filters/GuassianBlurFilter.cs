@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kristers_Dugels_181RDB024.filters {
+namespace DinosaurGraphics.filters {
     public static class GuassianBlurFilter {
 
         public static PixelRGB[,] GuassianBlurImpl(PixelRGB[,] src, PixelRGB[,] dest, double[,] kernel) {

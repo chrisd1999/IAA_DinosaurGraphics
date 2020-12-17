@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Kristers_Dugels_181RDB024
+namespace DinosaurGraphics
 {
     public class PixelRGB
     {

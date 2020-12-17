@@ -3,7 +3,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
 
-namespace Kristers_Dugels_181RDB024
+namespace DinosaurGraphics
 {
     public class ImageClass {
         public PixelRGB[,] img1;
@@ -49,14 +49,6 @@ namespace Kristers_Dugels_181RDB024
             bmp.UnlockBits(bmpData);
 
             return bmp;
-        }
-
-        public void ClonePixelArray(PixelRGB[,] src, PixelRGB[,] dest) {
-            for (int x = 0; x < src.GetLength(0); x++) {
-                for (int y = 0; y < src.GetLength(1); y++) {
-                    dest[x, y] = new PixelRGB(src[x, y].R, src[x, y].G, src[x, y].B);
-                }
-            }
         }
     }
 }

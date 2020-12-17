@@ -1,4 +1,4 @@
-﻿namespace Kristers_Dugels_181RDB024
+﻿namespace DinosaurGraphics
 {
     partial class Form1
     {

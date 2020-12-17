@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-using static Kristers_Dugels_181RDB024.helpers.FiltersHelper;
+using static DinosaurGraphics.helpers.FiltersHelper;
 
-namespace Kristers_Dugels_181RDB024
+namespace DinosaurGraphics
 {
     public partial class Form1 : Form {
         public ImageClass imageClass = new ImageClass();

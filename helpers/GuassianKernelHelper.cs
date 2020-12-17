@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Kristers_Dugels_181RDB024.helpers {
+namespace DinosaurGraphics.helpers {
     public static class GuassianKernelHelper {
         public static double[,] GuassianKernel(int len, double sigma) {
             double[,] gaussianKernel = new double[len, len];

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Kristers_Dugels_181RDB024.Properties
+namespace DinosaurGraphics.Properties
 {
 
 

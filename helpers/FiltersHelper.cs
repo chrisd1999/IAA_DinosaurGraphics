@@ -1,8 +1,8 @@
-﻿using static Kristers_Dugels_181RDB024.filters.GuassianBlurFilter;
-using static Kristers_Dugels_181RDB024.filters.OutlierTechniqueFilter;
-using static Kristers_Dugels_181RDB024.helpers.GuassianKernelHelper;
+﻿using static DinosaurGraphics.filters.GuassianBlurFilter;
+using static DinosaurGraphics.filters.OutlierTechniqueFilter;
+using static DinosaurGraphics.helpers.GuassianKernelHelper;
 
-namespace Kristers_Dugels_181RDB024.helpers {
+namespace DinosaurGraphics.helpers {
     public static class FiltersHelper {
 
         public static PixelRGB[,] GuassianBlur(PixelRGB[,] src, PixelRGB[,] dest, double[,] kernel) {
