@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-using Kristers_Dugels_181RDB024.helpers;
+using static DinosaurGraphics.helpers.FiltersHelper;
 
-namespace Kristers_Dugels_181RDB024
+namespace DinosaurGraphics
 {
     public partial class Form1 : Form {
         public ImageClass imageClass = new ImageClass();
@@ -23,7 +23,8 @@ namespace Kristers_Dugels_181RDB024
 
         private void InvertToolStripMenuItem_Click(object sender, EventArgs e){
             if (pictureBox1.Image != null) {
-                imageClass.img2 = BoxFilterHelper.BoxFilter(imageClass.img1, imageClass.img2);
+                //imageClass.img2 = GuassianBlur(imageClass.img1, imageClass.img2, 19, 9.25);
+                imageClass.img2 = OutlierTechnique(imageClass.img1, imageClass.img2);
                 pictureBox2.Image = imageClass.DrawImage(imageClass.img2);
             }
         }

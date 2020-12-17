@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Kristers_Dugels_181RDB024.Properties
+namespace DinosaurGraphics.Properties
 {
 
 
@@ -44,7 +44,7 @@ namespace Kristers_Dugels_181RDB024.Properties
             {
                 if ((resourceMan == null))
                 {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Kristers_Dugels_181RDB024.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("DinosaurGraphics.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

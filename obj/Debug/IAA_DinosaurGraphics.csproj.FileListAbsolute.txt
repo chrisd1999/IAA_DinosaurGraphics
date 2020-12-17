@@ -1,0 +1,10 @@
+C:\Users\Kristers\Documents\Github Repository\IAA_DinosaurGraphics\bin\Debug\Kristers_Dugels_181RDB024.exe.config
+C:\Users\Kristers\Documents\Github Repository\IAA_DinosaurGraphics\bin\Debug\Kristers_Dugels_181RDB024.exe
+C:\Users\Kristers\Documents\Github Repository\IAA_DinosaurGraphics\bin\Debug\Kristers_Dugels_181RDB024.pdb
+C:\Users\Kristers\Documents\Github Repository\IAA_DinosaurGraphics\obj\Debug\IAA_DinosaurGraphics.csprojAssemblyReference.cache
+C:\Users\Kristers\Documents\Github Repository\IAA_DinosaurGraphics\obj\Debug\Kristers_Dugels_181RDB024.Properties.Resources.resources
+C:\Users\Kristers\Documents\Github Repository\IAA_DinosaurGraphics\obj\Debug\IAA_DinosaurGraphics.csproj.GenerateResource.cache
+C:\Users\Kristers\Documents\Github Repository\IAA_DinosaurGraphics\obj\Debug\IAA_DinosaurGraphics.csproj.CoreCompileInputs.cache
+C:\Users\Kristers\Documents\Github Repository\IAA_DinosaurGraphics\obj\Debug\Kristers_Dugels_181RDB024.exe
+C:\Users\Kristers\Documents\Github Repository\IAA_DinosaurGraphics\obj\Debug\Kristers_Dugels_181RDB024.pdb
+C:\Users\Kristers\Documents\Github Repository\IAA_DinosaurGraphics\obj\Debug\DinosaurGraphics.Form1.resources
