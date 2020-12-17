@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kristers_Dugels_181RDB024.helpers {
-    public static class GuassianBlurHelper {
+namespace Kristers_Dugels_181RDB024.filters {
+    public static class GuassianBlurFilter {
 
-        static PixelRGB[,] GuassianBlurImpl(PixelRGB[,] src, PixelRGB[,] dest, double[,] kernel) {
+        public static PixelRGB[,] GuassianBlurImpl(PixelRGB[,] src, PixelRGB[,] dest, double[,] kernel) {
 
             int width  = dest.GetLength(0);
             int height = dest.GetLength(1);
@@ -45,37 +45,6 @@ namespace Kristers_Dugels_181RDB024.helpers {
                 }
             }
             return dest;
-        }
-
-        static double[,] GuassianKernel(int len, double sigma) {
-            double[,] gaussianKernel = new double[len, len];
-            double sum = 0;
-            int r = len / 2;
-
-            double distance = 0;
-
-            double euler = 1f / (2f * Math.PI * Math.Pow(sigma, 2));
-
-            for(int y = -r; y <= r; y++) {
-                for(int x = -r; x <= r; x++) {
-                    distance = ((x * x) + (y * y) / (2 * sigma * sigma));
-
-                    gaussianKernel[y + r, x + r] = euler * Math.Exp(-distance);
-                    sum += gaussianKernel[y + r, x + r];
-                }
-            }
-
-            for(int y = 0; y < len; y++) {
-                for(int x = 0; x < len; x++) {
-                    gaussianKernel[y, x] *= 1f / sum;
-                }
-            }
-
-            return gaussianKernel;
-        }
-
-        public static PixelRGB[,] GuassianBlur(PixelRGB[,] src, PixelRGB[,] dest, int len, double sigma) {
-            return GuassianBlurImpl(src, dest, GuassianKernel(len, sigma));
         }
     }
 }

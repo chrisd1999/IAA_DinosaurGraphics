@@ -1,9 +1,9 @@
 ﻿using System;
 
-namespace Kristers_Dugels_181RDB024.helpers {
-    public static class OutlierTechniqueHelper {
+namespace Kristers_Dugels_181RDB024.filters {
+    public static class OutlierTechniqueFilter {
 
-        static PixelRGB[,] OutlierTechniqueImpl(PixelRGB[,] src, PixelRGB[,] dest, int t) {
+        public static PixelRGB[,] OutlierTechniqueImpl(PixelRGB[,] src, PixelRGB[,] dest, int t) {
 
             int width = dest.GetLength(0);
             int height = dest.GetLength(1);

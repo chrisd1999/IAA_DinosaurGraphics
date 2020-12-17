@@ -61,15 +61,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="helpers\BoxFilterHelper.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="helpers\GuassianBlurHelper.cs" />
-    <Compile Include="helpers\OutlierTechniqueHelper.cs" />
+    <Compile Include="filters\GuassianBlurFilter.cs" />
+    <Compile Include="filters\NonLocalMeansFilter.cs" />
+    <Compile Include="filters\OutlierTechniqueFilter.cs" />
+    <Compile Include="helpers\FiltersHelper.cs" />
+    <Compile Include="helpers\GuassianKernelHelper.cs" />
     <Compile Include="ImageClass.cs" />
     <Compile Include="PixelRGB.cs" />
     <Compile Include="Program.cs" />
