@@ -26,6 +26,7 @@ namespace DinosaurGraphics
 
                 for (int x = 0; x < bmp.Width; x++) {
                     img1[x, y] = new PixelRGB(row[pixelComponents * x + 2], row[pixelComponents * x + 1], row[pixelComponents * x]);
+                    img2[x, y] = new PixelRGB(row[pixelComponents * x + 2], row[pixelComponents * x + 1], row[pixelComponents * x]);
                 }
             }
 

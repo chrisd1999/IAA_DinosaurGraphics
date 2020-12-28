@@ -1,5 +1,6 @@
 ﻿using static DinosaurGraphics.filters.GuassianBlurFilter;
 using static DinosaurGraphics.filters.OutlierTechniqueFilter;
+using static DinosaurGraphics.filters.NonLocalMeansFilter;
 using static DinosaurGraphics.helpers.GuassianKernelHelper;
 
 namespace DinosaurGraphics.helpers {
@@ -19,6 +20,10 @@ namespace DinosaurGraphics.helpers {
 
         public static PixelRGB[,] OutlierTechnique(PixelRGB[,] src, PixelRGB[,] dest) {
             return OutlierTechniqueImpl(src, dest, 1);
+        }
+
+        public static PixelRGB[,] NonLocalMeansFilter(PixelRGB[,] src, PixelRGB[,] dest, float h, int patchSize, int windowSize) {
+            return NonLocalMeansImpl(src, dest, h, patchSize, windowSize);
         }
     }
 }
