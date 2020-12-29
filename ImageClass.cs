@@ -13,6 +13,7 @@ namespace DinosaurGraphics
             img1 = new PixelRGB[bmp.Width, bmp.Height];
             img2 = new PixelRGB[bmp.Width, bmp.Height];
 
+
             var bmpData = bmp.LockBits(new Rectangle(0, 0, bmp.Width, bmp.Height), ImageLockMode.ReadOnly, bmp.PixelFormat);
             int pixelComponents;
             if (bmpData.PixelFormat == PixelFormat.Format24bppRgb) pixelComponents = 3;

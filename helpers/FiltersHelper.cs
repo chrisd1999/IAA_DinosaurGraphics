@@ -22,7 +22,7 @@ namespace DinosaurGraphics.helpers {
             return OutlierTechniqueImpl(src, dest, 1);
         }
 
-        public static PixelRGB[,] NonLocalMeansFilter(PixelRGB[,] src, PixelRGB[,] dest, double h, int patchSize, int windowSize) {
+        public static PixelRGB[,] NonLocalMeansFilter(PixelRGB[,] src, PixelRGB[,] dest, int h, int patchSize, int windowSize) {
             return NonLocalMeansImpl(src, dest, h, patchSize, windowSize);
         }
     }
