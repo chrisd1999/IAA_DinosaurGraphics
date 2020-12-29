@@ -4,7 +4,7 @@ using static DinosaurGraphics.helpers.GuassianKernelHelper;
 namespace DinosaurGraphics.filters {
     public static class NonLocalMeansFilter {
 
-        public static PixelRGB[,] NonLocalMeansImpl(PixelRGB[,] src, PixelRGB[,] dest, int h, int window_size, int sim_window_size) {
+        public static PixelRGB[,] NonLocalMeansImpl(PixelRGB[,] src, PixelRGB[,] dest, double h, int window_size, int sim_window_size) {
 
             int width = src.GetLength(0);
             int height = src.GetLength(1);
@@ -13,7 +13,7 @@ namespace DinosaurGraphics.filters {
             int mid_window = (window_size - 1) / 2;
             int mid_sim_window = (sim_window_size - 1) / 2;
 
-            int h2 = h * h;
+            double h2 = h * h;
 
             for(int i = mid_window; i < width - mid_window; i++) {
                 for(int j = mid_window; j < height - mid_window; j++) {
@@ -37,12 +37,21 @@ namespace DinosaurGraphics.filters {
                         for (int v = vmin; v < vmax; v++) {
 
                             PixelRGB[,] W2 = GetWindow(src, u - mid_window, u + mid_window, v - mid_window, v + mid_window);
-                            var D2 = WeightedDistance(W1, W2, kernel, window_size - 1);
 
-                            var sumDistance = SumDistance(D2, window_size - 1);
-                            double sijR = Math.Exp(-sumDistance.Item1 / h2);
-                            double sijG = Math.Exp(-sumDistance.Item2 / h2);
-                            double sijB = Math.Exp(-sumDistance.Item3 / h2);
+                            var result_window = SubstractWindows(W1, W2, window_size - 1);
+
+                            var norm_value = Normalize(result_window, window_size - 1);
+
+                            double sijR = Math.Exp(-norm_value.Item1 / h2);
+                            double sijG = Math.Exp(-norm_value.Item2 / h2);
+                            double sijB = Math.Exp(-norm_value.Item3 / h2);
+
+                            //var D2 = WeightedDistance(W1, W2, kernel, window_size - 1);
+
+                            //var sumDistance = SumDistance(D2, window_size - 1);
+                            //double sijR = Math.Exp(-sumDistance.Item1 / h2);
+                            //double sijG = Math.Exp(-sumDistance.Item2 / h2);
+                            //double sijB = Math.Exp(-sumDistance.Item3 / h2);
 
                             Zr += sijR;
                             Zg += sijG;
@@ -61,6 +70,23 @@ namespace DinosaurGraphics.filters {
             }
 
             return dest;
+        }
+
+        static Tuple<double, double, double> Normalize(Tuple<int[,], int[,], int[,]> values, int size) {
+
+            double sumR = 0.0d;
+            double sumG = 0.0d;
+            double sumB = 0.0d;
+
+            for(int i = 0; i < size; i++) {
+                for(int j = 0; j < size; j++) {
+                    sumR += Math.Pow(values.Item1[i, j], 2.0);
+                    sumG += Math.Pow(values.Item2[i, j], 2.0);
+                    sumB += Math.Pow(values.Item3[i, j], 2.0);
+                }
+            }
+
+            return Tuple.Create(sumR, sumG, sumB);
         }
 
         static Tuple<double[,], double[,], double[,]> WeightedDistance(PixelRGB[,] W1, PixelRGB[,] W2, double[,] kernel, int size) {
