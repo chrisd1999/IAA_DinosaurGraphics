@@ -4,22 +4,24 @@ using static DinosaurGraphics.helpers.GuassianKernelHelper;
 namespace DinosaurGraphics.filters {
     public static class NonLocalMeansFilter {
 
-        public static PixelRGB[,] NonLocalMeansImpl(PixelRGB[,] src, PixelRGB[,] dest, float h, int window_size, int sim_window_size) {
+        public static PixelRGB[,] NonLocalMeansImpl(PixelRGB[,] src, PixelRGB[,] dest, double stdev, int window_size, int sim_window_size) {
 
-            int width = dest.GetLength(0);
-            int height = dest.GetLength(1);
+            int width = src.GetLength(0);
+            int height = src.GetLength(1);
 
             PixelRGB[,] W1;
             PixelRGB[,] W2;
-            PixelRGB[,] SubstractWindow;
-            
+
             int mid_window = (window_size - 1) / 2;
             int mid_sim_window = (sim_window_size - 1) / 2;
 
             for(int i = mid_window; i < width - mid_window; i++) {
                 for(int j = mid_window; j < height - mid_window; j++) {
 
-                    double sum = 0.0f;
+                    double sumR = 0.0d;
+                    double sumG = 0.0d;
+                    double sumB = 0.0d;
+
                     W1 = GetWindow(src, i, j, window_size);
 
                     int umin = Math.Max(i - mid_sim_window, mid_window);
@@ -27,38 +29,79 @@ namespace DinosaurGraphics.filters {
                     int vmin = Math.Max(j - mid_sim_window, mid_window);
                     int vmax = Math.Min(j + mid_sim_window, height - mid_window);
 
-                    double norm = 0.0d;
+                    double normalization_factorR = 0.0d;
+                    double normalization_factorG = 0.0d;
+                    double normalization_factorB = 0.0d;
 
-                    for(int u = umin; u < umax; u++) {
+                    for (int u = umin; u < umax; u++) {
                         for(int v = vmin; v < vmax; v++) {
 
                             W2 = GetWindow(src, u, v, window_size);
-                            SubstractWindow = SubstractWindows(W1, W2, window_size);
+                            var SW = SubstractWindows(W1, W2, window_size);
+
+                            var norm_value = Normalize(SW, window_size);
+                            double similarityR = Math.Exp(-norm_value.Item1 / Math.Pow(stdev, 2.0d));
+                            double similarityG = Math.Exp(-norm_value.Item2 / Math.Pow(stdev, 2.0d));
+                            double similarityB = Math.Exp(-norm_value.Item3 / Math.Pow(stdev, 2.0d));
+
+                            normalization_factorR += similarityR;
+                            normalization_factorG += similarityG;
+                            normalization_factorB += similarityB;
+
+                            sumR += similarityR * src[u, v].R;
+                            sumG += similarityG * src[u, v].G;
+                            sumB += similarityB * src[u, v].B;
                         }
                     }
 
+                    double r = Math.Max(0, Math.Min(255, sumR / normalization_factorR));
+                    double g = Math.Max(0, Math.Min(255, sumG / normalization_factorG));
+                    double b = Math.Max(0, Math.Min(255, sumB / normalization_factorB));
+
+                    dest[i, j].R = (byte)Math.Round(r);
+                    dest[i, j].G = (byte)Math.Round(g);
+                    dest[i, j].B = (byte)Math.Round(b);
+
                 }
             }
-
 
             return dest;
         }
 
-        static PixelRGB[,] SubstractWindows(PixelRGB[,] v, PixelRGB[,] u, int size) {
+        static Tuple<double, double, double> Normalize(Tuple<double[,], double[,], double[,]> v, int size) {
 
-            PixelRGB[,] result = new PixelRGB[size, size];
+            double sumR = 0.0d;
+            double sumG = 0.0d;
+            double sumB = 0.0d;
 
-            for(int i = 0; i < size; i++) {
+
+            for (int i = 0; i < size; i++) {
                 for(int j = 0; j < size; j++) {
-                    byte r = (byte)(v[i, j].R - u[i, j].R);
-                    byte g = (byte)(v[i, j].G - u[i, j].G);
-                    byte b = (byte)(v[i, j].B - u[i, j].B);
-
-                    result[i, j] = new PixelRGB(r, g, b);
+                    sumR += Math.Pow(v.Item1[i, j], 2.0d);
+                    sumG += Math.Pow(v.Item2[i, j], 2.0d);
+                    sumB += Math.Pow(v.Item3[i, j], 2.0d);
                 }
             }
 
-            return result;
+            return Tuple.Create(Math.Sqrt(sumR), Math.Sqrt(sumG), Math.Sqrt(sumB));
+        }
+
+        static Tuple<double[,], double[,], double[,]> SubstractWindows(PixelRGB[,] v, PixelRGB[,] u, int size) {
+
+            double[,] resultR = new double[size, size];
+            double[,] resultG = new double[size, size];
+            double[,] resultB = new double[size, size];
+
+
+            for (int i = 0; i < size; i++) {
+                for(int j = 0; j < size; j++) {
+                    resultR[i, j] = (double)v[i, j].R - (double)u[i, j].R;
+                    resultG[i, j] = (double)v[i, j].G - (double)u[i, j].G;
+                    resultB[i, j] = (double)v[i, j].B - (double)u[i, j].B;
+                }
+            }
+
+            return Tuple.Create(resultR, resultG, resultB);
         }
 
         static PixelRGB[,] GetWindow(PixelRGB[,] src, int x, int y, int size) {
@@ -74,6 +117,7 @@ namespace DinosaurGraphics.filters {
 
             return window;
         }
+
         //static PixelRGB[,] GetWindow(PixelRGB[,] src, int x1, int x2, int y1, int y2) {
 
         //    int size1 = x2 - x1;
