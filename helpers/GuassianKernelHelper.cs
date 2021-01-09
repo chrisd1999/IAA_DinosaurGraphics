@@ -11,7 +11,7 @@ namespace DinosaurGraphics.helpers {
 
             for (int y = -r; y <= r; y++) {
                 for (int x = -r; x <= r; x++) {
-                    double distance = ((x * x) + (y * y) / (2 * sigma * sigma));
+                    double distance = ((x * x) + (y * y)) / (2 * (sigma * sigma));
 
                     gaussianKernel[y + r, x + r] = euler * Math.Exp(-distance);
                     sum += gaussianKernel[y + r, x + r];
@@ -20,7 +20,7 @@ namespace DinosaurGraphics.helpers {
 
             for (int y = 0; y < len; y++) {
                 for (int x = 0; x < len; x++) {
-                    gaussianKernel[y, x] *= 1f / sum;
+                    gaussianKernel[y, x] *= (1f / sum);
                 }
             }
 
