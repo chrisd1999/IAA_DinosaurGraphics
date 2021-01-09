@@ -13,6 +13,7 @@ namespace DinosaurGraphics
             img1 = new PixelRGB[bmp.Width, bmp.Height];
             img2 = new PixelRGB[bmp.Width, bmp.Height];
 
+
             var bmpData = bmp.LockBits(new Rectangle(0, 0, bmp.Width, bmp.Height), ImageLockMode.ReadOnly, bmp.PixelFormat);
             int pixelComponents;
             if (bmpData.PixelFormat == PixelFormat.Format24bppRgb) pixelComponents = 3;
@@ -26,6 +27,7 @@ namespace DinosaurGraphics
 
                 for (int x = 0; x < bmp.Width; x++) {
                     img1[x, y] = new PixelRGB(row[pixelComponents * x + 2], row[pixelComponents * x + 1], row[pixelComponents * x]);
+                    img2[x, y] = new PixelRGB(row[pixelComponents * x + 2], row[pixelComponents * x + 1], row[pixelComponents * x]);
                 }
             }
 

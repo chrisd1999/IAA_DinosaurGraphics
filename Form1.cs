@@ -16,16 +16,17 @@ namespace DinosaurGraphics
                 pictureBox1.Image = Image.FromFile(openFileDialog1.FileName);
                 Bitmap bmp = (Bitmap)pictureBox1.Image.Clone();
                 imageClass.ReadImage(bmp);
-                imageClass.ClonePixelArray(imageClass.img1, imageClass.img2);
                 pictureBox2.Image = imageClass.DrawImage(imageClass.img2);
             }
         }
 
         private void InvertToolStripMenuItem_Click(object sender, EventArgs e){
             if (pictureBox1.Image != null) {
-                //imageClass.img2 = GuassianBlur(imageClass.img1, imageClass.img2, 19, 9.25);
-                imageClass.img2 = OutlierTechnique(imageClass.img1, imageClass.img2);
+                //imageClass.img2 = GuassianBlur(imageClass.img1, imageClass.img2, 5, 9.25);
+                imageClass.img2 = NonLocalMeansFilter(imageClass.img1, imageClass.img2, 10, 3, 4);
+                //imageClass.img2 = OutlierTechnique(imageClass.img1, imageClass.img2);
                 pictureBox2.Image = imageClass.DrawImage(imageClass.img2);
+
             }
         }
     }
