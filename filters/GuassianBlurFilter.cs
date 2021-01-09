@@ -8,7 +8,7 @@ namespace DinosaurGraphics.filters {
             int width  = dest.GetLength(0);
             int height = dest.GetLength(1);
 
-            int kernelLen = kernel.GetLength(0) - 1;
+            int kernelLen = kernel.GetLength(0);
             int edge = kernelLen / 2;
 
             for(int x = edge; x < width - edge; x++) {
@@ -31,13 +31,10 @@ namespace DinosaurGraphics.filters {
                     r = Math.Max(0, Math.Min(255, r));
                     g = Math.Max(0, Math.Min(255, g));
                     b = Math.Max(0, Math.Min(255, b));
-                    i = Math.Max(0, Math.Min(255, i));
-
 
                     dest[x, y].R = (byte)r;
                     dest[x, y].G = (byte)g;
                     dest[x, y].B = (byte)b;
-                    dest[x, y].I = (byte)i;
                 }
             }
             return dest;
