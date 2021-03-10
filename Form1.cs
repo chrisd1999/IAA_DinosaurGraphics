@@ -23,7 +23,7 @@ namespace DinosaurGraphics
         private void InvertToolStripMenuItem_Click(object sender, EventArgs e){
             if (pictureBox1.Image != null) {
                 //imageClass.img2 = GuassianBlur(imageClass.img1, imageClass.img2, 5, 9.25);
-                imageClass.img2 = NonLocalMeansFilter(imageClass.img1, imageClass.img2, 10, 3, 4);
+                imageClass.img2 = NonLocalMeansFilter(imageClass.img1, imageClass.img2, 5, 2, 6);
                 //imageClass.img2 = OutlierTechnique(imageClass.img1, imageClass.img2);
                 pictureBox2.Image = imageClass.DrawImage(imageClass.img2);
 
