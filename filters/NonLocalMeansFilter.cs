@@ -62,50 +62,18 @@ namespace DinosaurGraphics.filters {
         static double WeightedDistance(byte[,] W1, byte[,] W2, double[,] kernel, int size) {
 
             double[,] distance = new double[size, size];
+            int[,] result      = new int[size, size];
 
-            int[,] substracted = SubstractWindows(W1, W2, size);
-            int[,]  multiplied = MultiplyWindows(substracted, substracted, size);
+            double sum = 0;
 
             /* Convulation Kernel */
             for (int i = 0; i < size; i++) {
                 for (int j = 0; j < size; j++) {
-                    distance[i, j] = kernel[i, j] * multiplied[i, j];
-                }
-            }
-
-            return SumDistance(distance, size);
-        }
-
-        static int[,] SubstractWindows(byte[,] W1, byte[,] W2, int size) {
-            int[,] result = new int[size, size];
-
-            for(int i = 0; i < size; i++) {
-                for(int j = 0; j < size; j++) {
                     result[i, j] = W1[i, j] - W2[i, j];
-                }
-            }
+                    result[i, j] *= result[i, j];
 
-            return result;
-        }
+                    distance[i, j] = kernel[i, j] * result[i, j];
 
-        static int[,] MultiplyWindows(int[,] W1, int[,] W2, int size) {
-
-            int[,] result = new int[size, size];
-
-            for(int i = 0; i < size; i++) {
-                for(int j = 0; j < size; j++) {
-                    result[i, j] = W1[i, j] * W2[i, j];
-                }
-            }
-
-            return result;
-        }
-
-        static double SumDistance(double[,] distance, int size) {
-            double sum = 0;
-
-            for(int i = 0; i < size; i++) {
-                for(int j = 0; j < size; j++) {
                     sum += distance[i, j];
                 }
             }
